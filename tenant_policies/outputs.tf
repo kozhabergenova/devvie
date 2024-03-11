@@ -15,3 +15,9 @@ output "devvie_vrf" {
 }
 
 
+output "established_ct" {
+  value = aci_contract.est.id
+}
+
+
+

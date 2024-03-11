@@ -18,11 +18,59 @@ resource "aci_vrf" "devvie" {
   description            = "VRF for Devvie"
 }
 
-### The contract is already created on ACI
+### Contract with Established Flag for vzAny
 
-# data "aci_contract" "data_contract" {
-#   tenant_dn  = data.aci_tenant.common.id
-#   name       = "data_contract"
-# }
+resource "aci_filter" "est" {
+  tenant_dn = data.aci_tenant.common.id
+  name      = "est"
+}
+
+resource "aci_filter_entry" "est" {
+  name        = "est"
+  filter_dn   = aci_filter.est.id
+  ether_t     = "ip"
+  prot        = "tcp"
+  d_from_port = "unspecified"
+  d_to_port   = "unspecified"
+  stateful    = "no"
+  tcp_rules   = ["est"]
+}
+
+resource "aci_contract" "est" {
+  tenant_dn = data.aci_tenant.common.id
+  name      = "Established"
+  scope     = "context"
+  # lifecycle {
+  #   ignore_changes = [
+  #     filter_entry_ids,
+  #     filter_ids,
+  #   ]
+  # }
+}
+
+resource "aci_contract_subject" "est" {
+  contract_dn           = aci_contract.est.id
+  name                  = "est_subj"
+  rev_flt_ports         = "yes"
+  apply_both_directions = "yes"
+  relation_vz_rs_subj_filt_att = [
+    aci_filter.est.id,
+  ]
+}
+
+resource "aci_contract_subject_filter" "est" {
+  contract_subject_dn = aci_contract_subject.est.id
+  filter_dn           = aci_filter.est.id
+  action              = "permit"
+  priority_override   = "default"
+}
+
+resource "aci_any" "vzany" {
+  match_t                    = "AtleastOne"
+  pref_gr_memb               = "disabled"
+  relation_vz_rs_any_to_cons = [aci_contract.est.id]
+  relation_vz_rs_any_to_prov = [aci_contract.est.id]
+  vrf_dn                     = aci_vrf.devvie.id
+}
 
 ###

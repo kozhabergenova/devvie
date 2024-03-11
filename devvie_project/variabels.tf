@@ -20,12 +20,13 @@ variable "route_scope" {
   type = list(string)
 }
 
-# variable "provided_contract" {
-#   type = string
-# }
+variable "provided_contract" {
+  type = string
+}
 
 variable "mode" {
   type = string
+  default = "regular"
 }
 
 variable "tenant_os" {

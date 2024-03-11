@@ -1,6 +1,6 @@
 locals {
 
-lags = {
+  lags = {
     "VPC_DEVVIE_1" = {
       leaf_1    = "101"
       leaf_2    = "102"
@@ -15,7 +15,7 @@ lags = {
       to_port   = 2
       aep       = "aaep_devvie"
     }
-}
+  }
 
 }
 
@@ -40,7 +40,7 @@ resource "aci_attachable_access_entity_profile" "devvie_aaep" {
   name = "aaep_devvie"
   relation_infra_rs_dom_p = [
     aci_physical_domain.devvie_physdom.id
-   ]
+  ]
 }
 
 ### Access generic resource for AEP not for Network!!!!
@@ -48,9 +48,9 @@ resource "aci_attachable_access_entity_profile" "devvie_aaep" {
 resource "aci_access_generic" "epg_to_aep" {
   attachable_access_entity_profile_dn = aci_attachable_access_entity_profile.devvie_aaep.id
   name                                = "default"
-  lifecycle {
-    create_before_destroy = true
-  }
+  # lifecycle {
+  #   create_before_destroy = true
+  # }
 }
 
 ### Interface Policies
@@ -103,4 +103,5 @@ resource "aci_leaf_access_bundle_policy_group" "devvie" {
   relation_infra_rs_mcp_if_pol  = aci_miscabling_protocol_interface_policy.mcp_policy.id
   relation_infra_rs_lldp_if_pol = aci_lldp_interface_policy.lldp_policy.id
   relation_infra_rs_lacp_pol    = aci_lacp_policy.lacp_policy.id
+  depends_on                    = [aci_attachable_access_entity_profile.devvie_aaep]
 }

@@ -6,7 +6,7 @@ terraform {
     }
     fmc = {
       source  = "CiscoDevNet/fmc"
-      version = "0.2.3"
+      version = "1.4.8"
     }
     netbox = {
       source = "e-breuninger/netbox"

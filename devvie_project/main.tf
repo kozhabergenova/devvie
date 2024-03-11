@@ -68,11 +68,11 @@ resource "aci_epg_to_domain" "net_2_domain" {
   tdn                = var.physical_domain
 }
 
-# resource "aci_epg_to_contract" "provided_contract" {
-#   application_epg_dn = aci_application_epg.devvie_application_epg.id
-#   contract_dn        = var.provided_contracts
-#   contract_type      = "provider"
-# }
+resource "aci_epg_to_contract" "provided_contract" {
+  application_epg_dn = aci_application_epg.devvie_application_epg.id
+  contract_dn        = var.provided_contract
+  contract_type      = "provider"
+}
 
 resource "aci_subnet" "subnet" {
   parent_dn   = aci_application_epg.devvie_application_epg.id
@@ -82,7 +82,7 @@ resource "aci_subnet" "subnet" {
   description = "This subnet is created by terraform"
 }
 
-## Resource of the FMC's TF Provider, which will be used to define ACP policy later
+# Resource of the FMC's TF Provider, which will be used to define ACP policy later
 resource "fmc_network_objects" "aci_net" {
   name  = var.name
   value = local.subnet
@@ -90,13 +90,15 @@ resource "fmc_network_objects" "aci_net" {
 
 ###NETBOX PART###
 
-resource "netbox_vlan" "vlan" {
-  name = var.name
-  vid  = var.vlan_id
-}
+# resource "netbox_vlan" "vlan" {
+#   name = var.name
+#   vid  = var.vlan_id
+# }
 
-resource "netbox_prefix" "prefix" {
-  prefix  = local.subnet
-  status  = "active"
-  vlan_id = netbox_vlan.vlan.id
-}
+# resource "netbox_prefix" "prefix" {
+#   prefix  = local.subnet
+#   status  = "active"
+#   vlan_id = netbox_vlan.vlan.id
+# }
+
+###
