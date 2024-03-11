@@ -2,7 +2,7 @@
 
 This particular repo was created as a demo for the live stream session "NetGru" by Cisco DevNet, where I was a guest. The main goal of this demo is to show how you can start using [Cisco Application Centric Infrastructure](https://www.cisco.com/c/en/us/solutions/collateral/data-center-virtualization/application-centric-infrastructure/solution-overview-c22-741487.html) (ACI) with Terraform [modules](https://learn.hashicorp.com/tutorials/terraform/module). The code represents a network-centric scenario where an ACI Tenant requires a single network segment, operating in a similar fashion to a legacy VLAN.
 
-<img src="images/aci_network_centric.png" width="200">
+<img src="images/aci_network_centric.png" width="400">
 
 # What Tools are used to create networks ?
 
@@ -39,7 +39,7 @@ Replace "Your Username for FMC", "Your Username for FMC" and "Your Netbox API To
 
 While tenant network policies are configured separately from fabric access policies, tenant policies are not activated unless their underlying access policies are in place. Fabric access external-facing interfaces connect to external devices such as virtual machine controllers and baremetals, hosts, routers, firewalls. In the policy model, EPGs are tightly coupled with VLANs. The domain profile associated to the EPG contains the VLAN instance profile. The domain profile contains both the VLAN instance profile (VLAN pool) and the attacheable Access Entity Profile (AEP), which are associated directly with application EPGs. For more information, see [the Cisco's official guide](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/2-x/L2_config/b_Cisco_APIC_Layer_2_Configuration_Guide/b_Cisco_APIC_Layer_2_Configuration_Guide_chapter_011.html).  
 
-<img src="images/epgs_w_fabric_access.png" width="200">
+<img src="images/epgs_w_fabric_access.png" width="500">
 
 So, three modules are defined to create networks, specifically in our case, to create one Application EPG:
 1. tenant_policies module
