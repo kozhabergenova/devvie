@@ -1,13 +1,13 @@
 # What is this?
 
-This particular repo was created as a demo for the live stream session "NetGru" by Cisco DevNet, where I was a guest. The main goal of this demo is to show how you can start using [Cisco Application Centric Infrastructure](https://www.cisco.com/c/en/us/solutions/collateral/data-center-virtualization/application-centric-infrastructure/solution-overview-c22-741487.html) (ACI) with Terraform [modules](https://learn.hashicorp.com/tutorials/terraform/module). The code represents a network-centric scenario where an ACI Tenant requires a single network segment, operating in a similar fashion to a legacy VLAN.
+This repo was created as a demo for the live stream session "NetGru" by Cisco DevNet, where I was a guest. The main goal of this demo is to show how you can start using [Cisco Application Centric Infrastructure](https://www.cisco.com/c/en/us/solutions/collateral/data-center-virtualization/application-centric-infrastructure/solution-overview-c22-741487.html) (ACI) with Terraform [modules](https://learn.hashicorp.com/tutorials/terraform/module). The code represents a network-centric scenario where an ACI Tenant requires a single network segment, operating in a similar fashion to a legacy VLAN.
 
 
 <img src="images/aci_network_centric.png" width="400">
 
-# What Tools are used to create networks ?
+# What tools are used to create networks ?
 
- What Tools are used to create networks:
+ What tools are used to create networks:
 - [Terraform](https://www.terraform.io/) 
 - Cisco ACI Always-on Sandbox:
 https://sandboxapicdc.cisco.com/  

@@ -43,14 +43,11 @@ resource "aci_attachable_access_entity_profile" "devvie_aaep" {
   ]
 }
 
-### Access generic resource for AEP not for Network!!!!
+### Access generic resource for AEP, not for Network!!!!
 
 resource "aci_access_generic" "epg_to_aep" {
   attachable_access_entity_profile_dn = aci_attachable_access_entity_profile.devvie_aaep.id
   name                                = "default"
-  # lifecycle {
-  #   create_before_destroy = true
-  # }
 }
 
 ### Interface Policies
