@@ -48,7 +48,7 @@ To call a child module you need to add [Instance of the module](https://www.terr
 
 # How to use devvie project module to create networks?
 
-In order to create a new L3 network you need to add Instance of the module in devvie_project.tf file located in the root module:
+In order to create a new L3 network you need to add Instance of the module in networks.tf file located in the root module:
 
     ```
     module "devvie_project_1" {
