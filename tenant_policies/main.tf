@@ -40,12 +40,6 @@ resource "aci_contract" "est" {
   tenant_dn = data.aci_tenant.common.id
   name      = "Established"
   scope     = "context"
-  # lifecycle {
-  #   ignore_changes = [
-  #     filter_entry_ids,
-  #     filter_ids,
-  #   ]
-  # }
 }
 
 resource "aci_contract_subject" "est" {

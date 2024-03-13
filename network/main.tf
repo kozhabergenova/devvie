@@ -10,16 +10,16 @@ data "aci_tenant" "common" {
 }
 
 resource "aci_application_profile" "devvie_app_profile" {
-  tenant_dn   = var.tenant_os
+  tenant_dn   = var.tenant
   name        = "${var.name}_ap"
   description = "${var.name} ap"
 }
 
 resource "aci_bridge_domain" "devvie_bridge_domain" {
-  tenant_dn                   = var.tenant_os
+  tenant_dn                   = var.tenant
   description                 = "Bridge Domain for ${var.name}"
   name                        = "vlan_${var.vlan_id}_bd"
-  relation_fv_rs_ctx          = var.vrf_os
+  relation_fv_rs_ctx          = var.vrf
   optimize_wan_bandwidth      = "no"
   annotation                  = "tag_bd"
   arp_flood                   = "yes"
@@ -90,15 +90,15 @@ resource "fmc_network_objects" "aci_net" {
 
 ###NETBOX PART###
 
-# resource "netbox_vlan" "vlan" {
-#   name = var.name
-#   vid  = var.vlan_id
-# }
+resource "netbox_vlan" "vlan" {
+  name = var.name
+  vid  = var.vlan_id
+}
 
-# resource "netbox_prefix" "prefix" {
-#   prefix  = local.subnet
-#   status  = "active"
-#   vlan_id = netbox_vlan.vlan.id
-# }
+resource "netbox_prefix" "prefix" {
+  prefix  = local.subnet
+  status  = "active"
+  vlan_id = netbox_vlan.vlan.id
+}
 
 ###

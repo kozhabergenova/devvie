@@ -29,11 +29,11 @@ variable "mode" {
   default = "regular"
 }
 
-variable "tenant_os" {
+variable "tenant" {
   type = string
 }
 
-variable "vrf_os" {
+variable "vrf" {
   type = string
 }
 
