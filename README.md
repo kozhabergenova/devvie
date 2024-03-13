@@ -52,7 +52,7 @@ In order to create a new L3 network you need to add Instance of the module in de
 
     ```
     module "devvie_project_1" {
-     source          = "./devvie_project"
+     source          = "./network"
      name            = "devvie_project_1"
      tenant          = module.tenant_policies.devvie_tenant
      vrf             = module.tenant_policies.devvie_vrf
