@@ -54,8 +54,8 @@ In order to create a new L3 network you need to add Instance of the module in de
     module "devvie_project_1" {
      source          = "./devvie_project"
      name            = "devvie_project_1"
-     tenant_os       = module.tenant_policies.devvie_tenant
-     vrf_os          = module.tenant_policies.devvie_vrf
+     tenant          = module.tenant_policies.devvie_tenant
+     vrf             = module.tenant_policies.devvie_vrf
      vlan_id         = 15
      aep_access      = module.fabric_policies.aep_generic
      physical_domain = module.fabric_policies.physical_domain
@@ -67,9 +67,9 @@ In order to create a new L3 network you need to add Instance of the module in de
     ```
 "name" variable sets the project name of the network
 
-"tenant_os" variable declares the tenant of the network (the output of the predefined resource). 
+"tenant" variable declares the tenant of the network (the output of the predefined resource). 
 
-"vrf_os" variable defines the vrf of the network (the output of the predefined resource).
+"vrf" variable defines the vrf of the network (the output of the predefined resource).
 
 "vlan_id" variable depicts Vlan id of the project
 
