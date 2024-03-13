@@ -7,11 +7,11 @@ This repo was created as a demo for the live stream session "NetGru" by Cisco De
 
 # What tools are used to create networks ?
 
- What tools are used to create networks:
 - [Terraform](https://www.terraform.io/) 
 - Cisco ACI Always-on Sandbox:
 https://sandboxapicdc.cisco.com/  
-- [Sandbox](fmcrestapisandbox.cisco.com) for [The Cisco Secure Firewall Management Center](https://www.cisco.com/c/en/us/products/collateral/security/firesight-management-center/datasheet-c78-736775.html)(FMC)
+- [Cisco FMC](https://www.cisco.com/c/en/us/products/collateral/security/firesight-management-center/datasheet-c78-736775.html) Sandbox:
+https://fmcrestapisandbox.cisco.com/
 - [Netbox](https://docs.netbox.dev/en/stable/)
 
 # Using Environmental Variables for Authentication:
@@ -26,7 +26,7 @@ You should use Terraform variables to securely supply the credentials or utilize
   export FMC_INSECURE_SKIP_VERIFY=true
   export NETBOX_API_TOKEN=<Your Netbox API Token>
   ```
-Replace "Your Username for FMC", "Your Username for FMC" and "Your Netbox API Token" with your actual credentials. This approach ensures that sensitive information such as usernames and passwords are not hardcoded into your Terraform configuration files.
+Replace "Your Username for FMC", "Your Password for FMC" and "Your Netbox API Token" with your actual credentials. This approach ensures that sensitive information such as usernames and passwords are not hardcoded into your Terraform configuration files.
 
 # How the repository is structured ?
 
@@ -65,25 +65,25 @@ In order to create a new L3 network you need to add Instance of the module in ne
      provided_contract = module.tenant_policies.established_ct
     }
     ```
-"name" variable sets the project name of the network
+"name" variable sets the project name of the network.
 
-"tenant" variable declares the tenant of the network (the output of the predefined resource). 
+"tenant" variable declares the tenant of the network (the output of the predefined resource).
 
 "vrf" variable defines the vrf of the network (the output of the predefined resource).
 
-"vlan_id" variable depicts Vlan id of the project
+"vlan_id" variable depicts Vlan id of the project.
 
-"aep_access" variable assigns this EPG with specific AEP
+"aep_access" variable assigns this EPG with specific AEP (the output of the predefined resource).
 
-"physical_domain" variable deploys EPG on a leaf port with a VLAN in a physical domain
+"physical_domain" variable deploys EPG on a leaf port with a VLAN in a physical domain (the output of the predefined resource).
 
 "mode" stands for Layer 2 Interface Modes. Allowed values: trunk(regular)/access(untagged)/native(native). Default value: "regular".
 
-"gateway_address" variable's name speaks for itself
+"gateway_address" variable's name speaks for itself.
 
 "route_scope" the List of network visibility of the subnet. Allowed values are "private", "public" and "shared".
 
-"provided_contract" variable identifies the default set of contracts that contract type is "Provided". 
+"provided_contract" variable identifies the default set of contracts that contract type is "Provided" (the output of the predefined resource).
 
 # Additional Information
 
