@@ -1,4 +1,3 @@
-
 provider "aci" {
   username = var.aci_username
   password = var.aci_password
@@ -12,6 +11,15 @@ provider "fmc" {
 }
 
 provider "netbox" {
-  server_url = "http://0.0.0.0:8000"
+  server_url           = "http://54.196.115.176:8000"
   allow_insecure_https = "true"
 }
+
+terraform {
+  backend "s3" {
+    bucket = "github-pub-tf-state"
+    region = "us-east-1"
+    # Environment variable for key is AWS_BUCKET_KEY_NAME
+  }
+}
+

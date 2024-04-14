@@ -4,13 +4,13 @@ terraform {
       source  = "CiscoDevNet/aci"
       version = "2.11.1"
     }
-    fmc = {
-      source  = "CiscoDevNet/fmc"
-      version = "1.4.8"
-    }
-    netbox = {
-      source = "e-breuninger/netbox"
-      version = "3.7.3"
-    }
+    # fmc = {
+    #   source  = "CiscoDevNet/fmc"
+    #   version = "1.4.8"
+    # }
+    # netbox = {
+    #   source = "e-breuninger/netbox"
+    #   version = "3.7.3"
+    # }
   }
 }

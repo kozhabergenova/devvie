@@ -37,7 +37,7 @@ While tenant network policies are configured separately from fabric access polic
 So, three modules are defined to create networks, specifically in our case, to create one Application EPG:
 1. tenant_policies module
 2. fabric_policies module (Fabric Access Policies)
-3. devvie_project module (Module for Network Creation)  
+3. network module 
 
 * epg_creation.tf file represents the way, how can you create one network in the root module. It is commented.
 
@@ -46,7 +46,7 @@ To call a child module you need to add [Instance of the module](https://www.terr
 - arguments corresponding to input variables defined by the modules
 - module output values
 
-# How to use devvie project module to create networks?
+# How to use network module to create networks?
 
 In order to create a new L3 network you need to add Instance of the module in networks.tf file located in the root module:
 
