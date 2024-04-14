@@ -25,7 +25,7 @@ variable "provided_contract" {
 }
 
 variable "mode" {
-  type = string
+  type    = string
   default = "regular"
 }
 

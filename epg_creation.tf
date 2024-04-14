@@ -1,20 +1,21 @@
 # resource "aci_tenant" "devvie" {
-#   name = "devvie"
+#   name        = "devvie"
 # }
 
 # resource "aci_vrf" "devvie" {
-#   tenant_dn = aci_tenant.devvie.id
-#   name      = "devvie"
+#   tenant_dn              = aci_tenant.devvie.id
+#   name                   = "devvie_vrf"
 # }
 
 # resource "aci_application_profile" "devvie" {
-#   tenant_dn = aci_tenant.devvie.id
-#   name      = "devvie"
+#   tenant_dn  = aci_tenant.devvie.id
+#   name       = "devvie"
 # }
 
 # resource "aci_bridge_domain" "devvie" {
 #   tenant_dn                   = aci_tenant.devvie.id
-#   name                        = "devvie"
+#   description                 = "from terraform"
+#   name                        = "devvie_bd"
 #   optimize_wan_bandwidth      = "no"
 #   annotation                  = "tag_bd"
 #   arp_flood                   = "no"
@@ -37,10 +38,10 @@
 #   unk_mcast_act               = "flood"
 #   v6unk_mcast_act             = "flood"
 #   vmac                        = "not-applicable"
-# }
+#     }
 
 # resource "aci_application_epg" "devvie" {
-#   application_profile_dn = aci_application_profile.devvie.id
-#   name                   = "devvie"
-#   relation_fv_rs_bd      = aci_bridge_domain.devvie.id
+#   application_profile_dn  = aci_application_profile.devvie.id
+#   name                    = "devvie_epg"
+#   relation_fv_rs_bd       = aci_bridge_domain.devvie.id
 # }

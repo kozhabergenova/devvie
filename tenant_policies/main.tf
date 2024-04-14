@@ -1,10 +1,10 @@
 data "aci_tenant" "common" {
-  name  = "common"
+  name = "common"
 }
 
 resource "aci_vrf" "common" {
-  tenant_dn  = data.aci_tenant.common.id
-  name       = "common"
+  tenant_dn = data.aci_tenant.common.id
+  name      = "common"
 }
 
 resource "aci_tenant" "devvie" {
@@ -13,9 +13,9 @@ resource "aci_tenant" "devvie" {
 }
 
 resource "aci_vrf" "devvie" {
-  tenant_dn              = aci_tenant.devvie.id
-  name                   = "devvie"
-  description            = "VRF for Devvie"
+  tenant_dn   = aci_tenant.devvie.id
+  name        = "devvie"
+  description = "VRF for Devvie"
 }
 
 ### Contract with Established Flag for vzAny

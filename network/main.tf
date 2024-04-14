@@ -57,7 +57,7 @@ resource "aci_application_epg" "devvie_application_epg" {
 # From the provider documentation: name - (Required) The name of the user defined function object. Name must be "default".
 
 resource "aci_epgs_using_function" "epg_to_aep_assign" {
-  access_generic_dn = "${var.aep_access}"
+  access_generic_dn = var.aep_access
   tdn               = aci_application_epg.devvie_application_epg.id
   encap             = "vlan-${var.vlan_id}"
   mode              = var.mode
