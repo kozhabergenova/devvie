@@ -9,7 +9,7 @@ terraform {
       version = "1.4.8"
     }
     netbox = {
-      source = "e-breuninger/netbox"
+      source  = "e-breuninger/netbox"
       version = "3.8.0"
     }
   }
