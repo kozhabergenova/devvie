@@ -85,6 +85,36 @@ In order to create a new L3 network you need to add Instance of the module in ne
 
 "provided_contract" variable identifies the default set of contracts that contract type is "Provided" (the output of the predefined resource).
 
+# Remote Backend Configuration
+
+To store the remote state, Terraform uses [S3 backend](https://developer.hashicorp.com/terraform/language/settings/backends/s3).
+
+For GitHub Actions to access the S3 bucket in AWS, OpenID Connect is used. Detailed steps for configuring AWS part can be found [here](https://github.com/kozhabergenova/devvie/aws_policies/aws.md).
+
+# What is Github actions, why do we need them here?
+
+GitHub Actions is a continuous integration and continuous delivery (CI/CD) platform provided by GitHub. It enables you to automate various tasks within your repository, such as building, testing, and deploying your code.
+
+In this demo, GitHub Actions are used to automate the Terraform workflow for managing infrastructure as code (IaC) deployments. The workflow consists of two jobs: "plan" and "apply."
+
+- **Plan:** Executes Terraform commands for planning changes, including formatting, initializing, validating, and generating a plan.
+- **Apply:** Automatically applies Terraform changes upon pushing to the main branch.
+
+#### Trigger Events
+- **Push:** Triggered when changes are pushed to the main branch.
+- **Pull Request:** Triggered when pull requests are opened or updated.
+
+#### Permissions Required
+- **id-token:** Write access for AWS OpenID Connect connection.
+- **contents:** Read access for actions/checkout.
+- **pull-requests:** Write access for GitHub bot to comment on pull requests.
+
+### Terraform Import
+
+Terraform Import is a Terraform CLI command used to read real-world infrastructure and update the state so that future updates to the same set of infrastructure can be applied via IaC. For this demo, a simple [bash script](https://github.com/kozhabergenova/devvie/import_w_file.sh) is prepared to import necessary objects on ACI with an [input file](https://github.com/kozhabergenova/devvie/input_for_nets.txt).
+
+For more details on how Terraform Import is utilized in this demo, please watch the accompanying stream.
+
 # Additional Information
 
 [DevNet Sandbox](https://developer.cisco.com/site/sandbox/)
@@ -95,6 +125,6 @@ In order to create a new L3 network you need to add Instance of the module in ne
 
 [Terraform Provider Documentation](https://registry.terraform.io/providers/e-breuninger/netbox/3.7.3/docs) for Netbox
 
-In the demo for the Netbox [netbox-docker](https://github.com/netbox-community/netbox-docker) was used. Token creation is described [here](https://docs.netbox.dev/en/stable/integrations/rest-api/#authenticating-to-the-api)
+In the demo for the Netbox [netbox-docker](https://github.com/netbox-community/netbox-docker) was used. Token creation is described [here](https://docs.netbox.dev/en/stable/integrations/rest-api/#authenticating-to-the-api). The Netbox Docker container is deployed inside an [EC2 instance](https://docs.aws.amazon.com/efs/latest/ug/gs-step-one-create-ec2-resources.html). It's important to note that you need at least a t3.medium type instance to launch Docker Compose successfully.
 
 If you have any questions, feel free to ask ! =)
