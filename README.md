@@ -89,7 +89,7 @@ In order to create a new L3 network you need to add Instance of the module in ne
 
 To store the remote state, Terraform uses [S3 backend](https://developer.hashicorp.com/terraform/language/settings/backends/s3).
 
-For GitHub Actions to access the S3 bucket in AWS, OpenID Connect is used. Detailed steps for configuring AWS part can be found [here](https://github.com/kozhabergenova/devvie/aws_policies/aws.md).
+For GitHub Actions to access the S3 bucket in AWS, OpenID Connect is used. Detailed steps for configuring AWS part can be found [here](https://github.com/kozhabergenova/devvie/blob/main/aws_policies/aws.md).
 
 # What is Github actions, why do we need them here?
 
@@ -111,7 +111,7 @@ In this demo, GitHub Actions are used to automate the Terraform workflow for man
 
 ### Terraform Import
 
-Terraform Import is a Terraform CLI command used to read real-world infrastructure and update the state so that future updates to the same set of infrastructure can be applied via IaC. For this demo, a simple [bash script](https://github.com/kozhabergenova/devvie/import_w_file.sh) is prepared to import necessary objects on ACI with an [input file](https://github.com/kozhabergenova/devvie/input_for_nets.txt).
+Terraform Import is a Terraform CLI command used to read real-world infrastructure and update the state so that future updates to the same set of infrastructure can be applied via IaC. For this demo, a simple [bash script](https://github.com/kozhabergenova/devvie/blob/main/import_w_file.sh) is prepared to import necessary objects on ACI with an [input file](https://github.com/kozhabergenova/devvie/blob/main/input_for_nets.txt).
 
 For more details on how Terraform Import is utilized in this demo, please watch the accompanying stream.
 
