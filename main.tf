@@ -13,6 +13,7 @@ provider "fmc" {
 provider "netbox" {
   server_url           = "http://54.196.115.176:8000"
   allow_insecure_https = "true"
+  skip_version_check   = "true"
 }
 
 terraform {
